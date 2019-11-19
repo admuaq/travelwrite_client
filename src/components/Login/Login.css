@@ -1,0 +1,9 @@
+input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+}
+
+small {
+  font-size: x-small;
+}

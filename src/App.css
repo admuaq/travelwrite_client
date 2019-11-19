@@ -20,3 +20,20 @@
 .App-link {
   color: #09d3ac;
 }
+
+.tile {
+  border: 1px solid black;
+  margin: 1em;
+}
+
+.form {
+  text-align: left;
+  margin: 1em;
+  border: 1px solid black;
+  padding: 1em;
+}
+
+.container {
+  text-align: center;
+  margin: 1em;
+}
