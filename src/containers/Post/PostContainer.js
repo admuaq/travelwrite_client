@@ -5,6 +5,7 @@ import Post from '../../components/Post/Post'
 
 class PostContainer extends Component {
   state = {
+    index: 0,
     posts: [
       { id: 1, name: 'First Post!', content: 'I cant believe that I am finally in Japan!' },
       { id: 2, name: 'A new Journey', content: 'Hopping the waters to visit Saporo, Hokkaido!' },
@@ -17,10 +18,24 @@ class PostContainer extends Component {
     selected: {}
   }
 
-  switchPostHandler = () => {
-    const selectedPost = this.selectRandomPost()
+  switchPostHandler = (index) => {
+    let currentIndex = index
+    // const selectedPost = this.selectRandomPost()
+
+    console.log(this.state.posts.length)
+
+    if (index >= (this.state.posts.length -1)){
+      currentIndex = 0
+    } else {
+      currentIndex += 1
+    }
+
+    console.log(index)
+
+    const selectedPost = this.state.posts[currentIndex]
     console.log(selectedPost)
-    this.setState({selected: selectedPost})
+    this.setState({selected: selectedPost, index: currentIndex})
+    
   }
 
   selectRandomPost = () => {
@@ -30,12 +45,13 @@ class PostContainer extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.switchPostHandler}>Click to switch Post</button> 
+        <button onClick={this.switchPostHandler.bind(this, this.state.index)} >Click to switch Post</button> 
         <div className='container'>
           <Post 
             postId={this.state.selected.id}
             postName={this.state.selected.name}
             postContent={this.state.selected.content}
+            click={this.switchPostHandler.bind(this, this.state.index)}
           />
         </div>
       </div>
